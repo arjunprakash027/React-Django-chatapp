@@ -1,42 +1,28 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import RoomList from './RoomList';
 
-function UserPage({ profile }) {
+const handleRoomClick = (room) => {
+  console.log("room clicked");
+  console.log(room);
+}
 
-    const [token, setToken] = useState(null);
+function UserPage({ token }) {
+
     const [data , setData ] = useState(null);
 
-    useEffect(() => {
-
-        const delay = 3000;
-
-        const credentials = {
-          username: profile['id'],
-          password: 'random123'
-        };
-        
-        const timeout = setTimeout(() => {
-        axios.post('http://127.0.0.1:8000/api/auth/login/', credentials)
-          .then((response) => {
-            console.log(response['data']);
-            setToken(response['data']['token']);
-          });
-        }, delay);
-        
-        return () => clearTimeout(timeout);
-      }, []); // Empty dependency array to run the effect only once
 
       useEffect(() => {
 
-        axios.get("http://127.0.0.1:8000/api/auth/hello/",{
+        axios.get("http://127.0.0.1:8000/api/chat/room/",{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token '+token
             }
         }).then((response) => {
             console.log(response['data']);
-            setData(response['data']['message']);
+            setData(response['data']);
           }, (error) => {
             console.log(error);
           }
@@ -45,9 +31,7 @@ function UserPage({ profile }) {
 
       return(
         <div>
-            <h2> User Page </h2>
-            <br />
-            <p> {data} </p>
+            <RoomList rooms={data} handleRoomClick={handleRoomClick} />
         </div>
       );
 }

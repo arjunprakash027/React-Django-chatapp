@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
 .App {
   text-align: center;
 }
@@ -37,13 +44,6 @@
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -53,11 +53,22 @@ nav {
   padding: 10px 20px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 8px;
+}
+
+.logo h2 {
+  font-size: 18px;
+  margin: 0;
+  color: #fff;
 }
 
 .dropdown {
@@ -68,6 +79,7 @@ nav {
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
 .dropdown-button span {
@@ -86,6 +98,9 @@ nav {
   list-style: none;
   padding: 8px 0;
   background-color: #333;
+  margin-top: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown.open .dropdown-menu {
@@ -111,12 +126,41 @@ nav {
 
 .profile-info h3 {
   margin-right: 8px;
-  color: #fff;
+  color: #ce0909;
 }
 
 button {
   padding: 6px 12px;
-  background-color: #fff;
+  background-color: #d11414;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
+
+  .dropdown {
+    order: 2;
+    margin-top: 10px;
+  }
+
+  .profile-info {
+    order: 1;
+    margin-top: 10px;
+  }
+}
+
+button {
+  padding: 6px 10px;
+  /* add spacing between button text and icon */
+  background-color: #fff8f8;
   color: #333;
   border: none;
   border-radius: 4px;
@@ -127,4 +171,54 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+}
+
+/* Additional Styles */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-heading {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.login-button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #45b6d9;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.card:hover {
+  background-color: #ebebeb;
+}
+
+.card h1 {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
 }
