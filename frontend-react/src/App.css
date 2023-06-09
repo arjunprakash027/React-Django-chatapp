@@ -1,3 +1,27 @@
+/* Update card styles */
+.card {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  margin: 10px;
+}
+
+.card h1 {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+}
+
+.card:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* Update overall application styles */
 body {
   margin: 0;
   padding: 0;
@@ -7,43 +31,43 @@ body {
 
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-heading {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #333;
 }
 
+.login-button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #45b6d9;
+}
+
+/* Update navigation bar styles */
 nav {
   display: flex;
   align-items: center;
@@ -69,10 +93,6 @@ nav {
   font-size: 18px;
   margin: 0;
   color: #fff;
-}
-
-.dropdown {
-  position: relative;
 }
 
 .dropdown-button {
@@ -129,18 +149,41 @@ nav {
   color: #ce0909;
 }
 
+/* Update button styles */
 button {
-  padding: 6px 12px;
-  background-color: #d11414;
+  padding: 6px 10px;
+  background-color: #fff8f8;
   color: #333;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Additional styles for UserPage component */
+.user-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.user-page h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.user-page p {
+  font-size: 16px;
+  color: #fff;
 }
 
 /* Responsive Styles */
-
 @media screen and (max-width: 768px) {
   nav {
     flex-wrap: wrap;
@@ -155,70 +198,4 @@ button {
     order: 1;
     margin-top: 10px;
   }
-}
-
-button {
-  padding: 6px 10px;
-  /* add spacing between button text and icon */
-  background-color: #fff8f8;
-  color: #333;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Additional Styles */
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.login-heading {
-  font-size: 24px;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-.login-button {
-  padding: 10px 20px;
-  background-color: #61dafb;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background-color: #45b6d9;
-}
-
-.card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  background-color: #f9f9f9;
-}
-
-.card:hover {
-  background-color: #ebebeb;
-}
-
-.card h1 {
-  font-size: 16px;
-  margin: 0;
-  color: #333;
 }

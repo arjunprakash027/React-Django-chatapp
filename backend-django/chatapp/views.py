@@ -33,7 +33,8 @@ class MessageView(APIView):
 
     def get(self,request):
         messages_value = {}
-        messages = Message.objects.filter(room=request.data.get('room'))
+        room = request.query_params.get('room')
+        messages = Message.objects.filter(room=room)
         for message in messages:
             messages_value[message.id] = {
                 'value':message.value,

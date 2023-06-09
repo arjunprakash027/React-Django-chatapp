@@ -3,10 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import RoomList from './RoomList';
 
-const handleRoomClick = (room) => {
-  console.log("room clicked");
-  console.log(room);
-}
+
 
 function UserPage({ token }) {
 
@@ -31,7 +28,7 @@ function UserPage({ token }) {
 
       return(
         <div>
-            <RoomList rooms={data} handleRoomClick={handleRoomClick} />
+            <RoomList rooms={data} token={token} />
         </div>
       );
 }

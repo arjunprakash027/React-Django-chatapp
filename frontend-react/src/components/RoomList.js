@@ -1,6 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
+import ChatWindow from './ChatWindow';
 
-function RoomList({rooms, handleRoomClick}){
+function RoomList({rooms, token}){
+    const [chatOpen, setChatOpen] = useState(false);
+    const [roomSelect, setRoomSelect] = useState(null);
+
+    const handleRoomClick = (room) => {
+        console.log("room clicked");
+        setRoomSelect(room);
+        setChatOpen(true);
+      }
+
+    const onBack = () => {
+        setChatOpen(false);
+        setRoomSelect(null);
+    }
 
     if (rooms === null){
         return(
@@ -12,6 +27,10 @@ function RoomList({rooms, handleRoomClick}){
 
     return(
         <div>
+            <button className='back-button' onClick={onBack}>
+                back
+            </button>
+            {chatOpen && <ChatWindow room={roomSelect} token={token} />}
             {
             rooms.map((room) => 
             (
@@ -22,6 +41,7 @@ function RoomList({rooms, handleRoomClick}){
                 </div>
             )
             )}
+            
         </div>
     );
 }
