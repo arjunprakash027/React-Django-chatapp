@@ -3,6 +3,8 @@
 
 ChatApp is a chat application built using Django and React, with Docker for easy deployment using Docker Compose.
 
+https://github.com/arjunprakash027/React-Django-chatapp/assets/72484657/632bb965-bdf5-4de8-bcdc-d322a72a015a
+
 ## Backend
 
 The backend of the application is developed using Django and Django Rest Framework (DRF) to provide a robust API.
