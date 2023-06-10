@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build: ./backend-django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/code/backend
+    ports:
+      - 8000:8000
+
+
+  client:
+    build: ./frontend-react
+    command: npm start
+    volumes:
+      - ./frontend:/code/frontend
+    ports:
+      - 3000:3000

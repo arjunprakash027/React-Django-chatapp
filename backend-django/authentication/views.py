@@ -4,6 +4,11 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
+from dotenv.main import load_dotenv
+import os
+
+load_dotenv()
+passphrase = os.environ['PASS']
 
 
 class RegisterNewUser(APIView):
@@ -15,7 +20,7 @@ class RegisterNewUser(APIView):
         try:
             user  = User.objects.create_user(
                 username = username,
-                password = "random123",
+                password = passphrase,
                 email = email,
                 first_name = name,
             )

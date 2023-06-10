@@ -4,6 +4,7 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import Navbar from './components/navigation_bar';
 import UserPage from './components/UserPage';
 import axios from 'axios';
+import Footer from './components/footer';
 import './App.css';
 
 function App() {
@@ -67,11 +68,10 @@ function App() {
 
       axios.post('http://127.0.0.1:8000/api/auth/register/', profileData).then(
         (response) => {
-          console.log(response['data']);
 
           const credentials = {
             username: profile['id'],
-            password: 'random123'
+            password: process.env.REACT_APP_PASS
           };
           const timeout = setTimeout(() => {
             axios.post('http://127.0.0.1:8000/api/auth/login/', credentials)
@@ -110,12 +110,14 @@ function App() {
         </div>
       ) : (
         <div className="login-container">
-          <h2 className="login-heading">Google Login</h2>
+          <h2 className="login-heading">React Django ChatApp</h2>
+          <p>This Project was done by me to sharpen my react and django skills. Feel free to login and test the application, Please do leave your valueable feedback!</p>
           <button className="login-button" onClick={login}>
             Sign in with Google
           </button>
         </div>
       )}
+      <Footer/>
     </div>
   );
 }

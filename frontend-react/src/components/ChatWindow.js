@@ -2,10 +2,38 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './ChatWindow.css';
 
-function ChatWindow ({room,token}){
+function ChatWindow ({ room,token }){
+    const handleMessageCreation = (message,profile) => {
+        if(message){
+          axios.post("http://127.0.0.1:8000/api/chat/message/",
+          {value:message,
+            room:room.id,
+            user:profile['id']},
+        {
+            headers : {
+              'Content-Type': 'application/json',
+              'Authorization': 'Token '+token
+            }
+    
+          }).then((response) => {
+            console.log(response['data']);
+          }).catch((error) => {
+            console.log(error);
+          });
+        }
+      };
     const [messages, setMessages] = useState([]);
+    const [sendMessage, setSendMessage] = useState("");
     console.log("romm id:",room.id);
-    console.log(token);
+
+    const handleSubmit = (e) => {
+        e.preventDefault(e);
+        const profile = JSON.parse(sessionStorage.getItem('profile'));
+        handleMessageCreation(sendMessage,profile);
+        setSendMessage("");
+        console.log(profile['id']);
+        
+    };
 
     useEffect(() => {
         const fetchMessages = async () => {
@@ -33,7 +61,7 @@ function ChatWindow ({room,token}){
             fetchMessages();
         },3000);
         return () => clearInterval(interval);
-        
+
       }, [room, token]);
 
     return(
@@ -50,6 +78,15 @@ function ChatWindow ({room,token}){
                 <p className="message-text">{message.value}</p>
               </div>
             ))}
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={sendMessage}
+                        onChange={(e) => setSendMessage(e.target.value)}
+                        placeholder="" 
+                    />
+                    <button type="submit">send</button>
+                </form>
           </div>
         </div>
       );

@@ -28,7 +28,7 @@ function UserPage({ token }) {
 
       return(
         <div>
-            <RoomList rooms={data} token={token} />
+            <RoomList rooms={data} token={token}/>
         </div>
       );
 }
